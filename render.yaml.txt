@@ -1,0 +1,25 @@
+services:
+  - type: web
+    name: call-monitor-bot
+    env: node
+    region: oregon
+    plan: free
+    buildCommand: chmod +x render-build.sh && ./render-build.sh
+    startCommand: npm start
+    envVars:
+      - key: NODE_ENV
+        value: production
+      # DO NOT set PUPPETEER_EXECUTABLE_PATH or PUPPETEER_CACHE_DIR
+      # puppeteer.config.cjs handles cache directory automatically
+      - key: BOT_TOKEN
+        sync: false
+      - key: ADMIN_ID
+        sync: false
+      - key: CHAT_ID
+        sync: false
+      - key: USERNAME
+        sync: false
+      - key: PASSWORD
+        sync: false
+      - key: CAPTCHA_API_KEY
+        sync: false
